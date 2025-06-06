@@ -1,0 +1,24 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Эти базовые стили помогают элементам формы выглядеть консистентно
+  в светлом и темном режимах, используя классы Tailwind.
+  Dark-режим теперь полностью управляется классами `dark:` в JSX.
+*/
+
+input,
+textarea,
+select {
+  /* Стили по умолчанию для светлой темы */
+  @apply bg-white text-gray-900 border-gray-300;
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  /* Стили для темной темы, когда активен класс 'dark' на html */
+  @apply bg-gray-900 text-gray-100 border-gray-700;
+}
