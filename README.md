@@ -1,54 +1,54 @@
-# React + TypeScript + Vite
+Product Feedback Board
+Это простое одностраничное приложение (SPA) для сбора и управления предложениями по продукту. Оно позволяет пользователям добавлять идеи, голосовать за них, фильтровать по категориям и сортировать по популярности или новизне. Приложение поддерживает светлую и тёмную темы, а также сохраняет состояние в локальном хранилище браузера.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Возможности
+Добавление предложений: Легко добавляйте новые идеи с текстом и категорией.
+Голосование: Поддерживайте или не поддерживайте идеи с помощью системы лайков/дизлайков.
+Удаление предложений: Убирайте неактуальные или завершённые идеи.
+Редактирование: Изменяйте текст и категорию существующих предложений через модальное окно.
+Фильтрация по категориям: Отображайте предложения по конкретным категориям (UI, Performance, Feature, Other).
+Сортировка: Сортируйте список идей по количеству голосов (популярности) или по дате добавления (новизне).
+Тёмная / Светлая тема: Переключайте цветовую схему интерфейса для комфортной работы.
+Сохранение состояния: Все данные (предложения, настройки сортировки, фильтры, тема) автоматически сохраняются в вашем браузере с помощью localStorage.
+Анимации: Плавные переходы и эффекты благодаря framer-motion.
+Экспорт/Импорт данных: Возможность экспортировать текущие предложения в JSON-файл и импортировать их обратно.
+🚀 Технологии
+React: Библиотека для построения пользовательских интерфейсов.
+TypeScript: Строго типизированный надмножество JavaScript, повышающее надёжность кода.
+Zustand: Легковесная библиотека для управления состоянием, используемая для глобального хранилища данных.
+zustand/middleware/persist: Для сохранения состояния в localStorage.
+zustand/middleware/devtools: Для интеграции с Redux DevTools в браузере.
+Tailwind CSS: Утилитарный CSS-фреймворк для быстрой и гибкой стилизации.
+Vite: Быстрый и лёгкий инструмент сборки для современных веб-проектов.
+🛠️ Установка и Запуск
+Чтобы запустить проект локально, выполните следующие шаги:
 
-Currently, two official plugins are available:
+Клонируйте репозиторий:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bash
 
-## Expanding the ESLint configuration
+git clone https://github.com/your-username/product-feedback-board.git # Замените на URL вашего репозитория
+cd product-feedback-board 
+Установите зависимости:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Bash
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+npm install
+# или если используете yarn
+# yarn
+Запустите проект:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Bash
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+npm run dev
+# или если используете yarn
+# yarn dev
+После этого приложение будет доступно по адресу http://localhost:5173/ (или другому порту, указанному Vite) в вашем браузере.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+🏗️ Структура Проекта
+Проект реализован в одном файле src/App.tsx для простоты демонстрации, но логически разделён на следующие секции:
+
+Типы данных и Константы: Определения Feedback, Category и ALL_CATEGORIES.
+Глобальное хранилище Zustand: Настройка useFeedbackStore с экшенами и мидлварами persist и devtools.
+Вспомогательные компоненты: Отдельные функциональные компоненты (Modal, FeedbackForm, FeedbackItem, FeedbackList, CategoryFilterControls, ExperimentalPanel).
+Главный компонент App: Основной компонент, который собирает все части приложения вместе.
